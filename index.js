@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const program = require("commander");
 
-const { jod, reg } = require("./actions/index");
+const { jod, reg, request } = require("./actions/index");
 
 program
   .command("jod")
@@ -14,6 +14,12 @@ program
   .alias("registration")
   .description("register")
   .action(reg);
+
+program
+  .command("req")
+  .alias("request")
+  .description("request")
+  .action(request);
 
 program
   .version("1.0.0")
