@@ -1,13 +1,25 @@
 #!/usr/bin/env node
 const program = require("commander");
 
-const { jod, reg, request } = require("./actions/index");
+const { jod, reg, request, user, tweets } = require("./actions/index");
 
 program
   .command("jod")
   .alias("joke")
   .description("get joke of the day")
   .action(jod);
+
+program
+  .command("user")
+  .alias("userInfo")
+  .description("Get current user info")
+  .action(user);
+
+program
+  .command("tweets")
+  .alias("twe")
+  .description("Get current user tweets")
+  .action(tweets);
 
 program
   .command("reg")
