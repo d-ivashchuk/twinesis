@@ -1,4 +1,6 @@
 const chalk = require("chalk");
+const moment = require("moment");
+const shortUrl = require("node-url-shortener");
 const ora = require("ora");
 const inquirer = require("inquirer");
 const { Observable } = require("rxjs");
@@ -35,6 +37,8 @@ module.exports = async function() {
   const displayedTweets = tweets
     .map(v => ({
       text: v.full_text,
+      tweetId: v.id_str,
+      createdAt: v.created_at,
       likes: v.favorite_count,
       retweets: v.retweet_count,
       isReply: v.in_reply_to_status_id,
@@ -50,9 +54,13 @@ module.exports = async function() {
     });
   displayedTweets.forEach(v =>
     console.log(
-      `${chalk.green(v.text)}\n\n💗 ${chalk.red(v.likes)}\n🔁 ${chalk.blue(
+      `${chalk.green(v.text)}\n\n💗 ${chalk.red(v.likes)}\n🔁 ${chalk.cyan(
         v.retweets
-      )}\n---\n`
+      )}\n\n${chalk.yellow(
+        moment(v.createdAt).format("YYYY-MM-DD")
+      )}\n${chalk.gray(
+        `https://twitter.com/42/status/${v.tweetId}`
+      )}\n${"-".repeat(process.stdout.columns)}`
     )
   );
 };

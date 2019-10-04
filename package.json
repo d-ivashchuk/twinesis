@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Dimitri Ivashchuk",
   "license": "UNLICENSED",
+  "bin": {
+    "twinesis": "./index.js"
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "chalk": "^2.4.2",
@@ -13,6 +16,8 @@
     "inquirer": "^6.2.2",
     "lodash": "^4.17.11",
     "lowdb": "^1.0.0",
+    "moment": "^2.24.0",
+    "node-url-shortener": "^1.0.1",
     "ora": "^3.2.0",
     "rxjs": "^6.5.3",
     "twitter": "^1.7.1"
