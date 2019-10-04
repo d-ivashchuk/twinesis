@@ -29,18 +29,26 @@ const getUserInfo = async userScreenName => {
   }
 };
 
-const getTweets = async userScreenName => {
+const getTweets = async (userScreenName, maxId) => {
   try {
+    let resultArray = [];
     const params = {
       screen_name: userScreenName,
-      exclude_replies: true,
-      include_rts: false,
       trim_user: true,
       tweet_mode: "extended",
-      count: 200
+      count: 200,
+      max_id: maxId
     };
     const tweets = await client.get("statuses/user_timeline", params);
-    return tweets;
+    resultArray = [...tweets];
+    if (tweets.length === 200) {
+      const nextTweets = await getTweets(
+        userScreenName,
+        tweets[tweets.length - 1].id
+      );
+      resultArray = [...resultArray, ...nextTweets];
+    }
+    return resultArray;
   } catch (err) {
     console.log(err);
   }

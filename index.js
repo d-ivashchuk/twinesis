@@ -2,6 +2,7 @@
 const program = require("commander");
 
 const { jod, reg, request, user, tweets } = require("./actions/index");
+const { getTweets } = require("./helpers/twitter");
 
 program
   .command("jod")
