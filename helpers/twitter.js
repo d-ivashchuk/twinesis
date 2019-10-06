@@ -1,11 +1,9 @@
-require("dotenv").config();
+const db = require("../utils/db");
 
-const {
-  TWITTER_KEY,
-  TWITTER_SECRET,
-  TWITTER_TOKEN_KEY,
-  TWITTER_TOKEN_SECRET
-} = process.env;
+const TWITTER_KEY = db.getState().twitterKey;
+const TWITTER_SECRET = db.getState().twitterSecret;
+const TWITTER_TOKEN_KEY = db.getState().tokenKey;
+const TWITTER_TOKEN_SECRET = db.getState().tokenSecret;
 
 const Twitter = require("twitter");
 
@@ -25,7 +23,9 @@ const getUserInfo = async userScreenName => {
     if (err[0].code === 17) {
       return { error: "BAD_USERNAME" };
     }
-    console.log(err);
+    if (err[0].code === 32) {
+      return { error: "BAD_AUTH" };
+    }
   }
 };
 
@@ -50,7 +50,7 @@ const getTweets = async (userScreenName, maxId) => {
     }
     return resultArray;
   } catch (err) {
-    console.log(err);
+    return { error: err[0].code };
   }
 };
 

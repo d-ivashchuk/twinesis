@@ -6,23 +6,34 @@ module.exports = async function() {
   const observe = Observable.create(async function(obs) {
     obs.next({
       type: "input",
-      name: "firstName",
-      message: "What's your first name"
+      name: "twitterKey",
+      message: "Provide the key of your twitter app"
     });
 
     obs.next({
       type: "input",
-      name: "lastName",
-      message: "What's your last name",
-      default: function() {
-        return "Doe";
-      }
+      name: "twitterSecret",
+      message: "Provide the secret of your twitter app"
+    });
+
+    obs.next({
+      type: "input",
+      name: "tokenKey",
+      message: "Provide the token key of your twitter app"
+    });
+
+    obs.next({
+      type: "input",
+      name: "tokenSecret",
+      message: "Provide the token secret of your twitter app"
     });
     obs.complete();
   });
 
   const answers = await inquirer.prompt(observe);
 
-  db.set("firstName", answers.firstName).write();
-  db.set("lastName", answers.lastName).write();
+  db.set("twitterKey", answers.twitterKey).write();
+  db.set("twitterSecret", answers.twitterSecret).write();
+  db.set("tokenKey", answers.tokenKey).write();
+  db.set("tokenSecret", answers.tokenSecret).write();
 };
