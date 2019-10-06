@@ -60,6 +60,8 @@ module.exports = async function() {
             v.retweets
           )}\n\n${chalk.yellow(
             moment(v.createdAt).format("YYYY-MM-DD")
+          )} - ${chalk.yellow(
+            moment(v.createdAt).format("HH:mm")
           )}\n${chalk.gray(
             `https://twitter.com/42/status/${v.tweetId}`
           )}\n${"-".repeat(process.stdout.columns)}`
