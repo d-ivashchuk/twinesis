@@ -6,9 +6,10 @@ const { getTweets } = require("./helpers/twitter");
 
 program
   .command("user")
+  .option("-n, --name <name>", "provide name of the user")
   .alias("userInfo")
   .description("Get current user info")
-  .action(user);
+  .action(args => user({ args }));
 
 program
   .command("tweets")
@@ -19,7 +20,7 @@ program
 program
   .command("reg")
   .alias("registration")
-  .description("register")
+  .description("Register your twitter app")
   .action(reg);
 
 program
