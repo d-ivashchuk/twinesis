@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "boxen": "^4.2.0",
     "chalk": "^2.4.2",
     "commander": "^2.19.0",
     "dotenv": "^8.1.0",
@@ -16,6 +17,7 @@
     "lodash": "^4.17.11",
     "lowdb": "^1.0.0",
     "moment": "^2.24.0",
+    "node-url-shortener": "^1.0.1",
     "ora": "^3.2.0",
     "rxjs": "^6.5.3",
     "twitter": "^1.7.1"
