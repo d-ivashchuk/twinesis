@@ -14,7 +14,7 @@
     "commander": "^2.19.0",
     "dotenv": "^8.1.0",
     "inquirer": "^6.2.2",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "lowdb": "^1.0.0",
     "moment": "^2.24.0",
     "node-url-shortener": "^1.0.1",
